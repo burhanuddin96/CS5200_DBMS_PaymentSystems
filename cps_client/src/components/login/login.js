@@ -2,16 +2,21 @@ import React from 'react';
 import { Container, Card, Col, Row, Button, Form, FormGroup, Label, Input} from 'reactstrap';
 import CardBody from "reactstrap/es/CardBody";
 import CardTitle from "reactstrap/es/CardTitle";
+import axios from 'axios';
+import { Redirect } from 'react-router-dom';
 
 export default class Login extends React.Component {
 
     constructor(props) {
         super(props);
-
         this.state = {
             username: "",
             password: ""
         };
+
+        if(props.props.isAuthenticated) {
+            return <Redirect to="/home"/>
+        }
     }
 
     validateForm() {
@@ -26,8 +31,20 @@ export default class Login extends React.Component {
 
     handleSubmit = event => {
         event.preventDefault();
-        console.log('Login submitted');
-        console.log(event);
+
+        axios.post('/users/login', this.state)
+            .then(resp => {
+                const user = resp.data[0]
+                if (!user) {
+                    alert('Login Unsuccessful. Please try again.')
+                } else {
+                    this.props.props.userAuth(true);
+                    this.props.props.setUser(user);
+                    this.props.history.push("/home");
+                }
+            }).catch(error => {
+                console.log(error);
+        });
     }
 
     render() {

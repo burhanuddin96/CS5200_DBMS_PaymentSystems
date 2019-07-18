@@ -3,10 +3,12 @@ import { Route, Switch } from 'react-router-dom';
 import Home from './components/home/home';
 import Login from './components/login/login'
 import NotFound from './components/NotFound/NotFound';
+import AuthRoute from './AuthRoute';
 
-export default () =>
+export default ({ authProps }) =>
     <Switch>
-        <Route path="/" exact component={Home} />
-        <Route path="/login" exact component={Login} />
+        <AuthRoute path="/home" exact component={Home} props={ authProps }/>
+        <Route path="/login" exact
+               render={(props) => <Login {...props} props={ authProps }/>}/>
         <Route component={NotFound} />
     </Switch>;

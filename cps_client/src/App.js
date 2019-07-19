@@ -3,6 +3,7 @@ import Routes from './Routes';
 import './App.css';
 import { Nav, Navbar, NavbarBrand, NavItem, NavbarToggler, Collapse} from "reactstrap";
 import {Link} from "react-router-dom";
+import {Container, Row} from "react-bootstrap";
 
 
 class App extends React.Component {
@@ -11,8 +12,17 @@ class App extends React.Component {
 
         this.state = {
             isAuthenticated: false,
-            user: null
+            user: null,
+            isOpen: false
         }
+        this.toggle = this.toggle.bind(this);
+
+    }
+
+    toggle() {
+        this.setState({
+            isOpen: !this.state.isOpen
+        });
     }
 
     authenticateUser = authenticated => {
@@ -37,11 +47,14 @@ class App extends React.Component {
         };
 
         return (
-            <div className="App">
+            <Container className="App">
+                <Row>
                 <Navbar color="light" expand="sm" fixed="top">
                     <NavbarBrand>
                         <Link to="/home">CONSOLIDATED PAYMENT SYSTEM</Link>
                     </NavbarBrand>
+                    <NavbarToggler onClick={this.toggle} />
+                    <Collapse isOpen={this.state.isOpen} navbar>
                     {this.state.isAuthenticated
                         ?
                         <Fragment>
@@ -49,6 +62,8 @@ class App extends React.Component {
                                 <NavItem> ABC </NavItem>
                             </Nav>
                             <Nav className="ml-auto">
+                                Welcome, {this.state.user ? this.state.user.first_name : ''}
+                                &nbsp;&nbsp;
                                 <NavItem>
                                     <Link to="/login" onClick={this.handleLogout}>LOGOUT</Link>
                                 </NavItem>
@@ -67,9 +82,11 @@ class App extends React.Component {
                             </Nav>
                         </Fragment>
                     }
+                    </Collapse>
                 </Navbar>
+                </Row>
                 <Routes authProps={authProps}/>
-            </div>
+            </Container>
         );
     }
 

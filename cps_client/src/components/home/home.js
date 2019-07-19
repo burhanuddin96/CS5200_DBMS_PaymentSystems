@@ -5,13 +5,15 @@ import './home.css';
 class Home extends React.Component {
     constructor(props) {
         super(props);
+        console.log('Home component')
     }
 
     render() {
         return (
           <div className="Home container-fluid">
               <div className="homepage">
-                The homepage for our consolidated payment systems.<br/>
+                  Hi, {this.props.user.first_name}!
+                The homepage for our systems.<br/>
                   Page under development.
               </div>
           </div>

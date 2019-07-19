@@ -11,7 +11,6 @@ router.get('/', function(req, res) {
 });
 
 router.post('/login', function(req, res) {
-  console.log('Login request ', req.body);
   service.getUserByUsernameAndPassword(req.body.username, req.body.password)
       .then(result => {
         res.json(result);
@@ -20,7 +19,11 @@ router.post('/login', function(req, res) {
 });
 
 router.post('/register', function(req, res) {
-  console.log(`Register request ${req}`);
+    service.addNewUser(req.body)
+        .then(result => {
+            res.json(true);
+        })
+        .catch(error => console.log("Promise rejected ", error));
 });
 
 module.exports = router;

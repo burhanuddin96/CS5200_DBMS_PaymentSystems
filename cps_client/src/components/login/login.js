@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Card, Col, Row, Button, Form, FormGroup, Label, Input} from 'reactstrap';
+import { Card, Col, Row, Button, Form, FormGroup, Label, Input} from 'reactstrap';
 import CardBody from "reactstrap/es/CardBody";
 import CardTitle from "reactstrap/es/CardTitle";
 import axios from 'axios';
@@ -49,8 +49,7 @@ export default class Login extends React.Component {
 
     render() {
         return (
-            <Container className="Login container">
-                <Row>
+                <Row className="Login">
                 <Col sm={{size: 6, offset: 3}}>
                 <Card className="login_card">
                     <CardBody>
@@ -76,7 +75,6 @@ export default class Login extends React.Component {
                 </Card>
                 </Col>
                 </Row>
-            </Container>
         );
     }
 }

@@ -1,4 +1,5 @@
 const express = require('express');
+const createError = require('http-errors');
 const router = express.Router();
 const UserService = require('../public/javascripts/userService');
 
@@ -10,12 +11,16 @@ router.get('/', function(req, res) {
   res.send('respond with a resource');
 });
 
-router.post('/login', function(req, res) {
+router.post('/login', function(req, res, next) {
+    console.log(req.body);
   service.getUserByUsernameAndPassword(req.body.username, req.body.password)
       .then(result => {
         res.json(result);
       })
-      .catch(error => console.log("Promise rejected"));
+      .catch(error => {
+          console.log("Promise rejected", error);
+          next(createError(500));
+      });
 });
 
 router.post('/register', function(req, res) {

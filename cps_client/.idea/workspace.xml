@@ -4,7 +4,6 @@
     <list default="true" id="f39da866-c2b0-41cc-ae47-e838e3bfd01d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../cps_server/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../cps_server/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cps_server/routes/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/../cps_server/routes/users.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -85,7 +84,7 @@
       <option name="presentableId" value="Default" />
       <updated>1563376881058</updated>
       <workItem from="1563376882169" duration="28763000" />
-      <workItem from="1563911350052" duration="952000" />
+      <workItem from="1563911350052" duration="1732000" />
     </task>
     <servers />
   </component>

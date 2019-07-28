@@ -12,7 +12,6 @@ router.get('/', function(req, res) {
 });
 
 router.post('/login', function(req, res, next) {
-    console.log(req.body);
   service.getUserByUsernameAndPassword(req.body.username, req.body.password)
       .then(result => {
         res.json(result);

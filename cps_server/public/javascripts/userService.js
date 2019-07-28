@@ -36,9 +36,9 @@ class UserService {
         return new Promise( (resolve, reject) => {
             dbConnection.query(query, [username, this.encrypt(password)], function(error, result) {
                 if (error) {
-                    return reject( error );
+                    reject(error);
                 }
-                resolve(result);
+                resolve(result[0]);
             });
         });
     }
